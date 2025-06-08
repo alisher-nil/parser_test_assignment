@@ -1,23 +1,28 @@
 import asyncio
+import os
 
+from dotenv import load_dotenv
 from playwright.async_api import async_playwright
 
 from app.parsers import HalykParser, KaspiParser, WBParser
 
-kaspi_url = "https://kaspi.kz/shop/p/tush-dlja-resnits-luxvisage-xxl-superob-em-effekt-nakladnyh-resnits-dlja-ob-ema-chernyi-17400245/?c=750000000"
-halyk_url = "https://halykmarket.kz/category/tush/tush-dlja-resnic-luxvisage-xxl-superobem-chernaja/"
-wb_url = "https://wildberries.kz/catalog/16789083/detail.aspx?size=47262700/"
+load_dotenv()
+kaspi_url = os.getenv("KASPI_URL", "")
+wb_url = os.getenv("WB_URL", "")
+halyk_url = os.getenv("HALYK_URL", "")
 
 
 async def main():
     async with async_playwright() as playwright:
-        # wb and halyk do not detect headless safari, so we use webkit
+        # Kaspi does not protect itself from scraping.
+        # Wb and halyk do, but they do not detect headless safari.
+        # Ozon does not allow scraping at all, and it's protection is quite robust,
+        # can't bypass it yet
         webkit_browser = await playwright.webkit.launch()
 
         halyk_parser = HalykParser(webkit_browser)
         kaspi_parser = KaspiParser(webkit_browser)
         wb_parser = WBParser(webkit_browser)
-        # No parser for ozon, protection too strong
         tasks = [
             kaspi_parser.fetch_price(kaspi_url),
             wb_parser.fetch_price(wb_url),
