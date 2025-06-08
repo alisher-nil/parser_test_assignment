@@ -1,6 +1,7 @@
 # Parser Test Assignment
 
-This project is a parser utility designed to process and extract structured information from various data sources. The main goal is to demonstrate the ability to parse data from different e-commerce platforms.
+This project is a parser utility designed to process and extract price information from various data sources.
+It is built using Python and utilizes the Playwright library for web scraping. The parser is structured to handle multiple e-commerce platforms, including kaspi, halyk, and wildberries.
 
 ## Installation
 
