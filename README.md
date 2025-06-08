@@ -1,3 +1,7 @@
+[![Playwright](https://custom-icon-badges.demolab.com/badge/Playwright-2EAD33?logo=playwright&logoColor=fff)](#)
+[![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=fff)](#)
+
+
 # Parser Test Assignment
 
 This project is a parser utility designed to process and extract price information from various data sources.
