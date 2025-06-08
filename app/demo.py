@@ -16,6 +16,8 @@ async def main():
     async with async_playwright() as playwright:
         # Kaspi does not protect itself from scraping.
         # Wb and halyk do, but they do not detect headless safari.
+        # Optionally, their protection can be bypasssed with chromium with stealth.
+        # We're using webkit here, since it is simpler solution.
         # Ozon does not allow scraping at all, and it's protection is quite robust,
         # can't bypass it yet
         webkit_browser = await playwright.webkit.launch()
