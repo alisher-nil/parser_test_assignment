@@ -17,7 +17,11 @@ uv sync
 ```bash
 playwright install
 ```
-3. Run the parser with your input data.
+4. Copy the `.env.example` file to `.env` and set your environment variables.
+```bash
+cp .env.example .env
+```
+5. Run the parser with your input data.
 ```bash
 # Example usage
 uv run app/demo.py
